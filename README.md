@@ -12,7 +12,8 @@ portfolio-evellyn/
 ├── js/projetos.js        ← ✏️ TODOS os conteúdos: projetos, contatos, showreel, galeria
 ├── js/main.js            ← interações (3D do hero, filtros, modal, rolagens)
 ├── assets/
-│   ├── brand/            ← favicon e imagem de compartilhamento (og.jpg)
+│   ├── evellyn.webp      ← sua foto (Sobre mim)
+│   ├── brand/            ← logotipo e monograma vetorizados (SVG), favicon e og.jpg
 │   ├── showreel/         ← showreel (provisório) e capa
 │   └── projetos/<nome>/  ← uma pasta por trabalho: vídeo, prévia, capa e fotos (web)
 ├── originais/            ← arquivos originais separados por trabalho (NÃO vão para o site)
@@ -44,13 +45,18 @@ Tudo fica em **`js/projetos.js`**:
 - **Nome da marca, cliente/autoral e seu papel** — procure por `CONFIRMAR`.
   `natureza: 'cliente'` ou `'autoral'` mostra o selo; `papel: ['Roteiro', 'Captação', 'Edição']`
   mostra o bloco "Meu papel" (vazio = escondido).
-- **Contatos** — preencha `contato` (WhatsApp, e-mail, LinkedIn, Instagram, currículo).
-  Botão sem link aparece como "em breve".
-- **Sua foto** — salve em `assets/` e coloque o caminho em `fotoPerfil`.
+- **Contatos** — lista `contato` (rótulo + link). Para o currículo, salve o PDF em
+  `assets/curriculo-evellyn-santos.pdf` e preencha o `url` do item "Baixar currículo".
+- **Sua foto** — substitua `assets/evellyn.webp` mantendo o mesmo nome.
 - **Showreel final** — substitua `assets/showreel/showreel-provisorio.mp4` (ou mude `src`)
   e troque `provisorio: true` por `false`.
 - **Novo projeto** — crie `assets/projetos/<nome>/` e copie um bloco existente em `projetos`.
-  Dica: vídeos web ≤ 1000 kbps, MP4 H.264; capas JPG ~720px; fotos WebP ~1400px.
+  Dica: vídeo MP4 H.264 com o arquivo original (sem recomprimir), prévia de 4 s em 480px,
+  capa WebP 720px e fotos WebP em tamanho original.
+
+### Peso do site
+A página inicial carrega só capas, fotos leves e 3 prévias curtas (~2 MB).
+Os vídeos completos (originais, sem perda de qualidade) só baixam quando alguém clica para assistir.
 
 Link direto para um projeto (bom para mandar a recrutadores):
 `https://SEU-SITE.netlify.app/#projeto=moda-praia-lookbook`

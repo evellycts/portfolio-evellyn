@@ -341,7 +341,7 @@
   const hsTrack = $('#hsTrack');
   const hsFill = $('#hsFill');
   hsTrack.innerHTML = D.galeria.map((g) => `
-    <figure class="hs-card"><img src="${g.mini}" srcset="${g.mini} 600w, ${g.src} 1400w" sizes="(max-width: 760px) 70vw, 400px" alt="${esc(g.alt)}" loading="lazy" decoding="async"><figcaption>${esc(g.alt)}</figcaption></figure>`).join('');
+    <figure class="hs-card"><img src="${g.mini}" srcset="${g.mini} 800w, ${g.src} 1200w" sizes="(max-width: 760px) 70vw, 400px" alt="${esc(g.alt)}" loading="lazy" decoding="async"><figcaption>${esc(g.alt)}</figcaption></figure>`).join('');
   let hsDist = 0;
   function hsSize() {
     hsDist = Math.max(0, hsTrack.scrollWidth - window.innerWidth);
@@ -370,32 +370,19 @@
   const scards = $$('.scard');
   const shades = scards.map((c) => $('.scard-shade', c));
 
-  /* ---------------- foto do perfil (opcional) ---------------- */
+  /* ---------------- foto do perfil (parallax) ---------------- */
   const fotoBox = $('#fotoPerfil');
-  let fotoImg = null;
-  if (D.fotoPerfil) {
-    fotoBox.innerHTML = `<img src="${D.fotoPerfil}" alt="Evellyn Santos" loading="lazy">`;
-    fotoImg = $('img', fotoBox);
-  }
+  const fotoImg = $('img', fotoBox);
 
   /* ---------------- contato ---------------- */
-  const ctaList = [
-    ['whatsapp', 'Entrar em contato por WhatsApp'],
-    ['email', 'Enviar e-mail'],
-    ['linkedin', 'LinkedIn'],
-    ['instagram', 'Instagram'],
-    ['curriculo', 'Baixar currículo']
-  ];
-  let firstSolid = true;
-  $('#ctaBtns').innerHTML = ctaList.map(([k, label]) => {
-    const url = (D.contato[k] || '').trim();
-    if (!url) return `<span class="btn btn-ghost" aria-disabled="true">${label} <small>em breve</small></span>`;
-    const cls = firstSolid ? 'btn btn-solid' : 'btn btn-ghost';
-    firstSolid = false;
-    const ext = /^https?:/.test(url) ? ' target="_blank" rel="noopener"' : '';
-    const dl = k === 'curriculo' ? ' download' : '';
-    return `<a class="${cls}" href="${esc(url)}"${ext}${dl}>${label} <span aria-hidden="true">→</span></a>`;
+  const linkAttrs = (c) => (/^https?:/.test(c.url) ? ' target="_blank" rel="noopener"' : '') + (c.download ? ' download' : '');
+  $('#ctaBtns').innerHTML = D.contato.map((c, i) => {
+    const url = (c.url || '').trim();
+    if (!url) return `<span class="btn btn-ghost" aria-disabled="true">${esc(c.rotulo)} <small>em breve</small></span>`;
+    return `<a class="btn ${i === 0 ? 'btn-solid' : 'btn-ghost'}" href="${esc(url)}"${linkAttrs(c)}>${esc(c.rotulo)} <span aria-hidden="true">→</span></a>`;
   }).join('');
+  $('#footSocial').innerHTML = D.contato.filter((c) => c.url && !c.download)
+    .map((c) => `<a class="ul" href="${esc(c.url)}"${linkAttrs(c)}>${esc(c.rotulo.replace(/^(Conversar no|Enviar) /, ''))}</a>`).join('');
 
   $('#toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
 

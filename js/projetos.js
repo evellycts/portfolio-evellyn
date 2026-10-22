@@ -30,7 +30,7 @@ window.PORTFOLIO = (function () {
   const P = (id, f) => `assets/projetos/${id}/${f}`;
   const video = (id, nome, formato, duracao) => ({
     tipo: 'video', formato, duracao,
-    src: P(id, `${nome}.mp4`), capa: P(id, `${nome}-capa.jpg`), preview: P(id, `${nome}-preview.mp4`)
+    src: P(id, `${nome}.mp4`), capa: P(id, `${nome}-capa.webp`), preview: P(id, `${nome}-preview.mp4`)
   });
   const fotos = (id, n) => Array.from({ length: n }, (_, i) => {
     const k = String(i + 1).padStart(2, '0');
@@ -51,7 +51,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR — ex.: ['Roteiro', 'Captação', 'Edição']
       processo: 'Externa à beira-mar com luz natural. Planos de detalhe do tecido em movimento com o vento, closes nas bolsas e acessórios, tipografia serifada sobre a imagem e um ritmo leve que alterna planos abertos e fechados.',
       resultado: 'Reel vertical de 37 segundos.',
-      capa: P('moda-praia-lookbook', 'lookbook-capa.jpg'),
+      capa: P('moda-praia-lookbook', 'lookbook-capa.webp'),
       midias: [video('moda-praia-lookbook', 'lookbook', 'vertical', '0:37')]
     },
     {
@@ -67,7 +67,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR
       processo: 'Luz suave de céu nublado, figurino em branco e bege para conversar com a paisagem e direção de movimentos espontâneos — giros, abraços e caminhadas na areia. Versão vertical para Reels e horizontal para tela cheia.',
       resultado: '6 fotografias, 1 vídeo vertical (0:27) e 1 vídeo horizontal (0:28).',
-      capa: P('ensaio-casal-praia', 'vertical-capa.jpg'),
+      capa: P('ensaio-casal-praia', 'vertical-capa.webp'),
       midias: [
         video('ensaio-casal-praia', 'vertical', 'vertical', '0:27'),
         video('ensaio-casal-praia', 'horizontal', 'horizontal', '0:28'),
@@ -103,7 +103,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR
       processo: 'Peças no manequim com colares compondo o look, closes de estampa e acabamento, transições pelo verde das folhagens e fechamento com chamada para o perfil.',
       resultado: 'Reel vertical de 20 segundos.',
-      capa: P('moda-vestidos-estampados', 'vestidos-capa.jpg'),
+      capa: P('moda-vestidos-estampados', 'vestidos-capa.webp'),
       midias: [video('moda-vestidos-estampados', 'vestidos', 'vertical', '0:20')]
     },
     {
@@ -119,7 +119,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR
       processo: 'Primeiro os detalhes: doces, lembranças, painel e flores. Depois as pessoas: chegada da noiva, brincadeiras e abraços, com câmera próxima e cortes no ritmo da música.',
       resultado: '2 vídeos verticais (1:12 e 0:20) e 10 fotografias.',
-      capa: P('evento-cha-da-noiva', 'celebracao-capa.jpg'),
+      capa: P('evento-cha-da-noiva', 'celebracao-capa.webp'),
       midias: [
         video('evento-cha-da-noiva', 'celebracao', 'vertical', '1:12'),
         video('evento-cha-da-noiva', 'decoracao', 'vertical', '0:20'),
@@ -139,7 +139,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR
       processo: 'Entrevistas curtas gravadas na loja, legendas destacadas palavra a palavra e uma montagem em que a fala de várias clientes forma uma única frase.',
       resultado: 'Reel vertical de 59 segundos.',
-      capa: P('infantil-depoimentos', 'depoimentos-capa.jpg'),
+      capa: P('infantil-depoimentos', 'depoimentos-capa.webp'),
       midias: [video('infantil-depoimentos', 'depoimentos', 'vertical', '0:59')]
     },
     {
@@ -155,7 +155,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR
       processo: 'Mesa montada com toalha xadrez e elementos de São João. Closes das mãos partindo o bolo, câmera bem próxima e cortes curtos para manter o apetite em alta.',
       resultado: 'Reel vertical de 20 segundos e 1 fotografia.',
-      capa: P('confeitaria-bolo-de-milho', 'bolo-de-milho-capa.jpg'),
+      capa: P('confeitaria-bolo-de-milho', 'bolo-de-milho-capa.webp'),
       midias: [video('confeitaria-bolo-de-milho', 'bolo-de-milho', 'vertical', '0:20'), ...fotos('confeitaria-bolo-de-milho', 1)]
     },
     {
@@ -171,7 +171,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR
       processo: 'Roteiro em tom de conversa, notificações de mensagens de clientes simuladas na tela, legendas dinâmicas e demonstração do site no fechamento.',
       resultado: 'Reel vertical de 59 segundos.',
-      capa: P('moda-loja-site-oficial', 'site-oficial-capa.jpg'),
+      capa: P('moda-loja-site-oficial', 'site-oficial-capa.webp'),
       midias: [video('moda-loja-site-oficial', 'site-oficial', 'vertical', '0:59')]
     },
     {
@@ -187,7 +187,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR
       processo: 'Moldura gráfica com a identidade do evento, câmera na mão acompanhando a movimentação da loja e cortes rápidos que mostram o volume de peças.',
       resultado: 'Reel vertical de 28 segundos.',
-      capa: P('infantil-evento-8-ou-80', 'evento-capa.jpg'),
+      capa: P('infantil-evento-8-ou-80', 'evento-capa.webp'),
       midias: [video('infantil-evento-8-ou-80', 'evento', 'vertical', '0:28')]
     },
     {
@@ -203,7 +203,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR
       processo: 'Hora dourada, ondas quebrando nas pedras como textura, planos abertos alternados com closes e título com os nomes do casal na abertura.',
       resultado: 'Vídeo horizontal de 38 segundos.',
-      capa: P('ensaio-por-do-sol', 'pre-wedding-capa.jpg'),
+      capa: P('ensaio-por-do-sol', 'pre-wedding-capa.webp'),
       midias: [video('ensaio-por-do-sol', 'pre-wedding', 'horizontal', '0:38')]
     },
     {
@@ -219,7 +219,7 @@ window.PORTFOLIO = (function () {
       papel: [],                                 // CONFIRMAR
       processo: 'Narrativa em primeira pessoa, planos de detalhe das etiquetas e tecidos e moldura com a identidade da loja.',
       resultado: 'Reel vertical de 1 minuto e 37 segundos.',
-      capa: P('infantil-reposicao', 'reposicao-capa.jpg'),
+      capa: P('infantil-reposicao', 'reposicao-capa.webp'),
       midias: [video('infantil-reposicao', 'reposicao', 'vertical', '1:37')]
     },
     {
@@ -255,7 +255,7 @@ window.PORTFOLIO = (function () {
     /* Showreel. Troque pelo arquivo final e mude provisorio para false. */
     showreel: {
       src: 'assets/showreel/showreel-provisorio.mp4',
-      capa: 'assets/showreel/showreel-capa.jpg',
+      capa: 'assets/showreel/showreel-capa.webp',
       provisorio: true
     },
 
@@ -277,18 +277,14 @@ window.PORTFOLIO = (function () {
       return { projeto: id, src: P(id, `foto-${k}.webp`), mini: P(id, `foto-${k}-mini.webp`), alt };
     }),
 
-    /* Contatos — preencha com os seus links reais.
-       Botões sem link aparecem como “em breve”. */
-    contato: {
-      whatsapp: '',   // ex.: 'https://wa.me/5581999999999'
-      email: '',      // ex.: 'mailto:seuemail@gmail.com'
-      linkedin: '',   // ex.: 'https://www.linkedin.com/in/seu-perfil'
-      instagram: '',  // ex.: 'https://www.instagram.com/seu-perfil'
-      curriculo: ''   // ex.: 'assets/curriculo-evellyn-santos.pdf'
-    },
-
-    /* Sua foto para a seção Sobre mim (ex.: 'assets/evellyn.webp').
-       Vazio = mostra um espaço reservado identificado. */
-    fotoPerfil: ''
+    /* Contatos. Botões sem link aparecem como “em breve”. */
+    contato: [
+      { rotulo: 'Conversar no WhatsApp', url: 'https://wa.me/5583988096432?text=Ol%C3%A1%2C%20Evellyn!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar.' },
+      { rotulo: 'Enviar e-mail', url: 'mailto:evesilva151515@gmail.com' },
+      { rotulo: 'LinkedIn', url: 'https://www.linkedin.com/in/evellycts' },
+      { rotulo: 'Instagram @evellycts', url: 'https://www.instagram.com/evellycts/' },
+      { rotulo: 'Agência @agencia.elyes', url: 'https://www.instagram.com/agencia.elyes/' },
+      { rotulo: 'Baixar currículo', url: '', download: true }   // ex.: 'assets/curriculo-evellyn-santos.pdf'
+    ]
   };
 })();
