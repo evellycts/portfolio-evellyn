@@ -109,13 +109,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav {
   position: fixed; inset: 0 0 auto; z-index: 80; height: 76px; padding: 0 var(--gutter);
   display: flex; align-items: center; justify-content: space-between;
-  transition: background .5s var(--ease), height .5s var(--ease), box-shadow .5s var(--ease);
+  transition: height .5s var(--ease);
 }
-.nav.is-scrolled {
-  height: 64px; background: rgba(245, 241, 235, .72); box-shadow: 0 1px 0 var(--line);
+/* O desfoque fica numa camada própria: backdrop-filter no próprio .nav prenderia o menu mobile (position: fixed) dentro do header */
+.nav::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; pointer-events: none;
+  background: rgba(245, 241, 235, .72); box-shadow: 0 1px 0 var(--line);
   backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%);
+  transition: opacity .5s var(--ease);
 }
-.logo { display: flex; align-items: center; gap: 10px; font: 600 15px/1 var(--caps); letter-spacing: .28em; text-transform: uppercase; }
+.nav.is-scrolled { height: 64px; }
+.nav.is-scrolled::before { opacity: 1; }
+.logo { position: relative; z-index: 2; display: flex; align-items: center; gap: 10px; font: 600 15px/1 var(--caps); letter-spacing: .28em; text-transform: uppercase; }
 .logo i, .foot-logo i { color: var(--rose); font-style: normal; }
 .mono { width: auto; height: 40px; transition: transform .6s var(--ease-out); }
 .logo:hover .mono { transform: rotate(-6deg) scale(1.05); }
@@ -405,7 +410,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .totop { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line-dark); display: grid; place-items: center; transition: background .4s, transform .5s var(--ease-out); }
 .totop svg { width: 20px; }
 .totop:hover { background: var(--rose); transform: translateY(-4px); }
-.wordmark { margin: clamp(40px, 7vw, 90px) auto clamp(20px, 3vw, 40px); max-width: 980px; padding: 0 var(--gutter); }
+.wordmark { margin: clamp(36px, 6vw, 72px) auto clamp(16px, 2.5vw, 32px); max-width: min(620px, 100%); padding: 0 var(--gutter); }
 .wordmark svg { width: 100%; height: auto; overflow: visible; }
 .wordmark { --wm-ink: rgba(245, 241, 235, .05); --wm-rose: rgba(183, 137, 138, .09); }
 .wm-base { stroke: rgba(245, 241, 235, .16); stroke-width: 3; }
@@ -483,8 +488,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 760px) {
   .burger { display: block; z-index: 2; }
   .nav-links {
-    position: fixed; inset: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; padding: 0 var(--gutter);
-    background: var(--ivory); font: 400 44px/1.25 var(--serif);
+    position: fixed; inset: 0; height: 100svh; flex-direction: column; justify-content: center; align-items: flex-start; gap: 14px; padding: 0 var(--gutter);
+    background: var(--ivory); font: 400 clamp(30px, 9vw, 38px)/1.2 var(--serif); letter-spacing: -.02em;
     clip-path: circle(0 at calc(100% - 38px) 38px); visibility: hidden;
     transition: clip-path .8s var(--ease-out), visibility 0s .8s;
   }
